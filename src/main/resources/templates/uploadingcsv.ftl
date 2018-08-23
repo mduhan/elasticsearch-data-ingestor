@@ -36,7 +36,7 @@
             </p>
             
             <p>
-                Cluster Name:<input style="margin-left:5em" id="clusterName" type="text" value="elasticsearch" name="clusterName">
+                Cluster Name:<input style="margin-left:5em" id="clusterName" type="text" value="" name="clusterName">
             </p>
             
   	        <p>
@@ -48,7 +48,7 @@
             </p>
             
             <p>
-                Mapping:  <textarea name="mapping" cols="20" rows="20" id="mapping" style="margin-left:7em" >mapping</textarea>
+                Mapping:  <textarea name="mapping" cols="20" rows="20" id="mapping" style="margin-left:7em" ></textarea>
 
             </p>
             

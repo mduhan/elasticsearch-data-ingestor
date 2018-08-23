@@ -18,3 +18,13 @@
 
 ## Build
 `  java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n -jar build/libs/elasticsearch-data-ingestor-1.0.jar
+
+## Access
+ http://localhost:9090/
+ 
+## Help
+
+Please verify elasticsearch cluster name in form
+ 
+sample es schema mapping file :-   https://github.com/mduhan/elasticsearch-data-ingestor/blob/master/src/main/resources/sample-mapping.json
+ 
