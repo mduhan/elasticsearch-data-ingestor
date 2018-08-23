@@ -1,0 +1,99 @@
+buildscript {
+   ext {
+		springBootVersion = '1.5.6.RELEASE'
+	}
+	
+    repositories {
+     mavenLocal()
+     mavenCentral()
+     maven { url "http://packages.confluent.io/maven/" }
+     maven { url "http://central.maven.org/maven2/" }
+    }
+    
+    dependencies {
+      classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'java'
+    id 'maven'
+    id 'eclipse'
+    id 'idea'
+    id 'org.springframework.boot' version '1.5.6.RELEASE'
+    id 'checkstyle'
+    id 'net.ltgt.apt' version '0.10'
+}
+
+
+group = 'org.novus'
+version = '1.0.0'
+
+jar {
+    baseName = 'elasticsearch-data-ingestor'
+    version =  '1.0'
+}
+description = "elasticsearch-data-ingestor"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+checkstyle {
+    toolVersion '7.8.1'
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+    source ='src/main/java'
+}
+checkstyleTest {
+    source ='src/test/java'
+}
+
+repositories {
+	 mavenLocal()
+     mavenCentral()
+     maven { url "http://packages.confluent.io/maven/" }
+     maven { url "http://central.maven.org/maven2/" }
+     maven { url "http://www.datanucleus.org/downloads/maven2/" }
+	 maven {url	 "http://nexus01.cloud.operative.com:8081/nexus/content/groups/public" }
+	 maven {url	 "http://redshift-maven-repository.s3-website-us-east-1.amazonaws.com/release" }
+}
+
+dependencies {
+    compile fileTree(dir: 'lib', include: '*.jar')
+}
+
+dependencies {
+
+
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version:'1.5.6.RELEASE') {
+	exclude(module: 'commons-logging')
+    }
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-remote-shell', version:'1.5.6.RELEASE'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version:'2.7'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-cassandra', version:'1.5.6.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.6.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version:'1.5.6.RELEASE'
+	compile group: 'org.elasticsearch', name: 'elasticsearch', version:'6.2.4'
+	compile group: 'org.elasticsearch.client', name: 'transport', version:'6.2.4'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version:'2.11.0'
+	compile group: 'com.github.vincentrussell', name: 'json-data-generator', version:'1.4-SNAPSHOT'
+	compile group: 'org.apache.commons', name: 'commons-math3', version:'3.5'
+	compile group: 'com.google.guava', name: 'guava', version:'18.0'
+	compile group: 'commons-lang', name: 'commons-lang', version:'2.6'
+	compile group: 'org.apache.commons', name: 'commons-collections4', version:'4.1'
+	compile group: 'commons-io', name: 'commons-io', version:'1.3.2'
+	compile group: 'commons-cli', name: 'commons-cli', version:'1.3.1'
+	compile group: 'org.bitstrings.test', name: 'junit-clptr', version:'1.2'
+	compile group: 'junit', name: 'junit', version:'4.12'
+	compile group: 'org.hamcrest', name: 'hamcrest-junit', version:'2.0.0.0'
+	compile group: 'com.google.code.gson', name: 'gson', version:'2.2.4'
+	compile group: 'com.github.stefanbirkner', name: 'system-rules', version:'1.16.0'
+	compile group: 'org.mockito', name: 'mockito-all', version:'1.10.19'
+	compile group: 'com.github.nikolavp', name: 'approval-core', version:'0.3'
+    
+    }

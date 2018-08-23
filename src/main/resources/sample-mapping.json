@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "index.max_result_window": 100000
+  },
+  "mappings": {
+    "ingestor": {
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "field1": {
+          "type": "long",
+          "index": true,
+          "store": true
+        },
+        "field2": {
+          "type": "keyword",
+          "index": true,
+          "store": true
+        }
+      }
+    }
+  }
+}
